@@ -18,7 +18,7 @@ type Tileset struct {
 type Image struct {
 	XMLName xml.Name `xml:"image"`
 	Format  string   `xml:"format"`
-	Source  string   `xml:"source"`
+	Source  string   `xml:"source,attr"`
 	Width   int      `xml:"width,attr"`
 	Height  int      `xml:"height,attr"`
 }
@@ -56,12 +56,12 @@ type Map struct {
 	Infinite     bool     `xml:"infinite,attr"`
 	// TODO nextlayerid and nextobjectid ?
 
-	//Tileset []Tileset `xml:"tileset"`
-	Layers  []Layer   `xml:"layer"`
-	Tileset []tileset `xml:"tileset"`
+	//Tileset []TilesetInfos `xml:"TilesetInfo"`
+	Layers  []Layer       `xml:"layer"`
+	Tileset []TilesetInfo `xml:"tileset"`
 }
 
-type tileset struct {
+type TilesetInfo struct {
 	FirstGid int    `xml:"firstgid,attr"`
 	Source   string `xml:"source,attr"`
 }

@@ -15,6 +15,7 @@ type EbitenTileset struct {
 	TilesetWidth  int
 	TilesetHeight int
 	Tiles         []Tile
+	ImageSrc      string
 }
 
 // GetEbitenTileset returns a simplified TSX Tileset, based on a file on disk
@@ -52,6 +53,7 @@ func transformMapToEbitenTileset(tsx *Tileset) (*EbitenTileset, error) {
 		TilesetWidth:  tsx.Columns,
 		TilesetHeight: int(math.Ceil(float64(tsx.TileCount) / float64(tsx.Columns))),
 		Tiles:         tsx.Tiles,
+		ImageSrc:      tsx.Image.Source,
 	}
 
 	return ebitenMap, nil

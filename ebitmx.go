@@ -12,12 +12,12 @@ import (
 // EbitenMap is the transformed representation of a TMX map in the simplest
 // way possible for Ebiten to understand and render
 type EbitenMap struct {
-	TileWidth  int
-	TileHeight int
-	MapHeight  int
-	MapWidth   int
-	Layers     [][]int
-	Tileset    map[int]string
+	TileWidth    int
+	TileHeight   int
+	MapHeight    int
+	MapWidth     int
+	Layers       [][]int
+	TilesetInfos []TilesetInfo
 }
 
 // GetEbitenMap returns a map that Ebiten can understand
@@ -80,9 +80,9 @@ func transformMapToEbitenMap(tmx *Map) (*EbitenMap, error) {
 	}
 
 	ebitenMap.Layers = ebitenLayers
-	ebitenMap.Tileset = make(map[int]string, len(tmx.Tileset))
-	for _, ts := range tmx.Tileset {
-		ebitenMap.Tileset[ts.FirstGid] = ts.Source
+	ebitenMap.TilesetInfos = make([]TilesetInfo, len(tmx.Tileset))
+	for i, ts := range tmx.Tileset {
+		ebitenMap.TilesetInfos[i] = ts
 	}
 	return ebitenMap, nil
 }
