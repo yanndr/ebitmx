@@ -17,6 +17,7 @@ type EbitenMap struct {
 	MapHeight  int
 	MapWidth   int
 	Layers     [][]int
+	Tileset    map[int]string
 }
 
 // GetEbitenMap returns a map that Ebiten can understand
@@ -79,5 +80,9 @@ func transformMapToEbitenMap(tmx *Map) (*EbitenMap, error) {
 	}
 
 	ebitenMap.Layers = ebitenLayers
+	ebitenMap.Tileset = make(map[int]string, len(tmx.Tileset))
+	for _, ts := range tmx.Tileset {
+		ebitenMap.Tileset[ts.FirstGid] = ts.Source
+	}
 	return ebitenMap, nil
 }

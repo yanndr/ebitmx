@@ -57,7 +57,13 @@ type Map struct {
 	// TODO nextlayerid and nextobjectid ?
 
 	//Tileset []Tileset `xml:"tileset"`
-	Layers []Layer `xml:"layer"`
+	Layers  []Layer   `xml:"layer"`
+	Tileset []tileset `xml:"tileset"`
+}
+
+type tileset struct {
+	FirstGid int    `xml:"firstGid,attr"`
+	Source   string `xml:"source,attr"`
 }
 
 // Layer represents a layer in the TMX map file
