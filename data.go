@@ -62,7 +62,7 @@ type Map struct {
 }
 
 type tileset struct {
-	FirstGid int    `xml:"firstGid,attr"`
+	FirstGid int    `xml:"firstgid,attr"`
 	Source   string `xml:"source,attr"`
 }
 
