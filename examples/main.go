@@ -52,7 +52,7 @@ func (g *Game) Update() error {
 	// As such, we have to iterate over the list each time and find the tile we're looking
 	// for. This could be improved by caching with a map of ids to *Tiles.
 	for _, t := range g.tileset.Tiles {
-		if t.Id+1 == id {
+		if t.Id+1 == int(id) {
 			g.currentTileType = t.Type
 			return nil
 		}
@@ -81,7 +81,7 @@ func (g *Game) Draw(screen *ebiten.Image) {
 			)
 			op.GeoM.Scale(sx, sy)
 
-			screen.DrawImage(g.getTileImgByID(id), op)
+			screen.DrawImage(g.getTileImgByID(int(id)), op)
 		}
 	}
 

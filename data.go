@@ -62,7 +62,7 @@ type Map struct {
 }
 
 type TilesetInfo struct {
-	FirstGid int    `xml:"firstgid,attr"`
+	FirstGid uint32 `xml:"firstgid,attr"`
 	Source   string `xml:"source,attr"`
 }
 
@@ -78,7 +78,8 @@ type Layer struct {
 
 // Data represents the data inside a Layer
 type Data struct {
-	XMLName  xml.Name `xml:"data"`
-	Encoding string   `xml:"encoding,attr"`
-	Raw      []byte   `xml:",innerxml"`
+	XMLName     xml.Name `xml:"data"`
+	Encoding    string   `xml:"encoding,attr"`
+	Compression string   `xml:"compression,attr"`
+	Raw         []byte   `xml:",innerxml"`
 }
