@@ -92,7 +92,6 @@ func transformMapToEbitenMap(tmx *Map) (*EbitenMap, error) {
 			br := bytes.NewReader(base64Bytes)
 			switch layer.Data.Compression {
 			case "zlib":
-				fmt.Println("zlib")
 				zlibReader, err := zlib.NewReader(br)
 				if err != nil {
 					return nil, err
@@ -100,7 +99,6 @@ func transformMapToEbitenMap(tmx *Map) (*EbitenMap, error) {
 				uncompress, err = extract(zlibReader)
 				break
 			case "gzip":
-				fmt.Println("gzip")
 				gzipReader, err := gzip.NewReader(br)
 				if err != nil {
 					return nil, err

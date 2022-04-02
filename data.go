@@ -24,10 +24,11 @@ type Image struct {
 }
 
 type Tile struct {
-	XMLName    xml.Name   `xml:"tile"`
-	Id         int        `xml:"id,attr"`
-	Type       string     `xml:"type,attr"`
-	Properties Properties `xml:"properties"`
+	XMLName     xml.Name      `xml:"tile"`
+	Id          int           `xml:"id,attr"`
+	Type        string        `xml:"type,attr"`
+	Properties  Properties    `xml:"properties"`
+	ObjectGroup []ObjectGroup `xml:"objectgroup"`
 }
 
 type Properties struct {
@@ -57,8 +58,24 @@ type Map struct {
 	// TODO nextlayerid and nextobjectid ?
 
 	//Tileset []TilesetInfos `xml:"TilesetInfo"`
-	Layers  []Layer       `xml:"layer"`
-	Tileset []TilesetInfo `xml:"tileset"`
+	Layers      []Layer       `xml:"layer"`
+	Tileset     []TilesetInfo `xml:"tileset"`
+	ObjectGroup []ObjectGroup `xml:"objectgroup"`
+}
+
+type ObjectGroup struct {
+	Id      int      `xml:"id,attr"`
+	Name    string   `xml:"name,attr"`
+	Objects []Object `xml:"object"`
+}
+
+type Object struct {
+	Id     int     `xml:"id,attr"`
+	Type   string  `xml:"type,attr"`
+	X      float64 `xml:"x,attr"`
+	Y      float64 `xml:"y,attr"`
+	Width  float64 `xml:"width,attr"`
+	Height float64 `xml:"height,attr"`
 }
 
 type TilesetInfo struct {
