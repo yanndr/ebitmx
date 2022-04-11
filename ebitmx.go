@@ -24,6 +24,7 @@ type EbitenMap struct {
 	MapWidth     int
 	Layers       [][]uint32
 	TilesetInfos []TilesetInfo
+	ObjectGroup  []ObjectGroup
 }
 
 // GetEbitenMap returns a map that Ebiten can understand
@@ -60,10 +61,11 @@ func GetEbitenMapFromFS(fileSystem fs.FS, path string) (*EbitenMap, error) {
 
 func transformMapToEbitenMap(tmx *Map) (*EbitenMap, error) {
 	ebitenMap := &EbitenMap{
-		TileWidth:  tmx.TilHeight,
-		TileHeight: tmx.TileWidth,
-		MapHeight:  tmx.Height,
-		MapWidth:   tmx.Width,
+		TileWidth:   tmx.TilHeight,
+		TileHeight:  tmx.TileWidth,
+		MapHeight:   tmx.Height,
+		MapWidth:    tmx.Width,
+		ObjectGroup: tmx.ObjectGroup,
 	}
 
 	var ebitenLayers [][]uint32
