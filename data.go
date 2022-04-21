@@ -41,6 +41,7 @@ type Property struct {
 	Name    string   `xml:"name,attr"`
 	Type    string   `xml:"type,attr"`
 	Value   string   `xml:"value,attr"`
+	Values  string   `xml:",innerxml"`
 }
 
 // Map is the representation of a map in a TMX file
@@ -71,6 +72,7 @@ type ObjectGroup struct {
 
 type Object struct {
 	Id         int        `xml:"id,attr"`
+	Name       string     `xml:"name,attr"`
 	Type       string     `xml:"type,attr"`
 	X          float64    `xml:"x,attr"`
 	Y          float64    `xml:"y,attr"`
